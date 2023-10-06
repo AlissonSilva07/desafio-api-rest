@@ -1,11 +1,13 @@
 package edu.alisson.desafioapirest.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Specs {
     @Id
+    @Column(nullable = false)
     private Integer specsId;
     private String processador;
     private String memoriaRam;

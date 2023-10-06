@@ -1,22 +1,19 @@
 package edu.alisson.desafioapirest.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 public class Workstation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Long id;
     private String titulo;
     private String detalhes;
-    private Integer patrimonio;
+    private String patrimonio;
     private Setor setor;
-    private List<Specs> specs;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Specs specs;
 
     public Long getId() {
         return id;
@@ -42,11 +39,11 @@ public class Workstation {
         this.detalhes = detalhes;
     }
 
-    public Integer getPatrimonio() {
+    public String getPatrimonio() {
         return patrimonio;
     }
 
-    public void setPatrimonio(Integer patrimonio) {
+    public void setPatrimonio(String patrimonio) {
         this.patrimonio = patrimonio;
     }
 
@@ -58,11 +55,11 @@ public class Workstation {
         this.setor = setor;
     }
 
-    public List<Specs> getSpecs() {
+    public Specs getSpecs() {
         return specs;
     }
 
-    public void setSpecs(List<Specs> specs) {
+    public void setSpecs(Specs specs) {
         this.specs = specs;
     }
 }
