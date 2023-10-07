@@ -7,6 +7,8 @@ import edu.alisson.desafioapirest.service.WorkstationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class WorkstationImpl implements WorkstationService {
     @Autowired
@@ -20,7 +22,8 @@ public class WorkstationImpl implements WorkstationService {
 
     @Override
     public Workstation buscarPorId(Long id) {
-        return null;
+        Optional<Workstation> workstation = workstationRepository.findById(id);
+        return workstation.get();
     }
 
     @Override

@@ -17,6 +17,12 @@ public class WorkstationController {
         return ResponseEntity.ok(workstationService.buscarTodos());
     }
 
+    @GetMapping
+    @RequestMapping("/{id}")
+    public ResponseEntity<Workstation> buscarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(workstationService.buscarPorId(id));
+    }
+
     @PostMapping
     public ResponseEntity<Workstation> inserir(@RequestBody Workstation workstation) {
         workstationService.inserir(workstation);
