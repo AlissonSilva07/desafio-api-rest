@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 public class Specs {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Integer specsId;
     private String processador;
     private String memoriaRam;

@@ -17,8 +17,7 @@ public class WorkstationController {
         return ResponseEntity.ok(workstationService.buscarTodos());
     }
 
-    @GetMapping
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Workstation> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(workstationService.buscarPorId(id));
     }
@@ -27,6 +26,18 @@ public class WorkstationController {
     public ResponseEntity<Workstation> inserir(@RequestBody Workstation workstation) {
         workstationService.inserir(workstation);
         return ResponseEntity.ok(workstation);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Workstation> atualizar(@PathVariable Long id, @RequestBody Workstation workstation) {
+        workstationService.atualizar(id, workstation);
+        return ResponseEntity.ok(workstation);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        workstationService.deletar(id);
+        return ResponseEntity.ok().build();
     }
 
 }

@@ -10,6 +10,7 @@ public class Workstation {
     private Long id;
     private String titulo;
     private String detalhes;
+    @Column(name = "workstation_id", unique = true)
     private String patrimonio;
     private Setor setor;
     @ManyToOne(cascade = CascadeType.ALL)

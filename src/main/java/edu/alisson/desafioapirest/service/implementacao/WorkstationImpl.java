@@ -13,8 +13,7 @@ import java.util.Optional;
 public class WorkstationImpl implements WorkstationService {
     @Autowired
     private WorkstationRepository workstationRepository;
-    @Autowired
-    private SpecsRepository specsRepository;
+
     @Override
     public Iterable<Workstation> buscarTodos() {
         return workstationRepository.findAll();
@@ -33,11 +32,14 @@ public class WorkstationImpl implements WorkstationService {
 
     @Override
     public void atualizar(Long id, Workstation workstation) {
-
+        Optional<Workstation> workstationBD = workstationRepository.findById(id);
+        if (workstationBD.isPresent()) {
+            workstationRepository.save(workstation);
+        }
     }
 
     @Override
     public void deletar(Long id) {
-
+        workstationRepository.deleteById(id);
     }
 }
